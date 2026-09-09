@@ -49,16 +49,18 @@ The lab uses a benign MSBuild project. No malicious payload, persistence mechani
 
 ## Lab Objectives
 
-- Understand the legitimate purpose and security relevance of PresentationHost.exe.
-- Verify the expected location and metadata of the legitimate executable.
-- Establish a clean baseline for the investigation environment.
-- Create and hash a controlled benign payload for the investigation.
-- Analyze Sysmon Event ID 1 for PresentationHost process creation.
-- Identify the parent process and examine command-line arguments.
-- Investigate any child processes spawned by PresentationHost.exe.
-- Analyze Sysmon Event ID 11 for related file creation activity.
-- Correlate process, file, user, and SIEM telemetry to reconstruct the execution chain.
-- Distinguish legitimate PresentationHost activity from indicators of potential abuse.
+- Understand how MSBuild abuse can be used as a trusted binary execution technique.
+- Identify MSBuild installations on a Windows endpoint and validate the selected executable.
+- Collect and examine file metadata, SHA256 hash, and Authenticode signature to establish binary legitimacy.
+- Create and execute a controlled MSBuild project using MSBuild.exe.
+- Detect the execution through Sysmon Event ID 1 (Process Creation).
+- Analyze the MSBuild command line to identify the executable and project file involved.
+- Correlate the MSBuild execution with available PowerShell and endpoint telemetry.
+- Build a timeline around the project creation, execution, and process creation events.
+- Distinguish between legitimate MSBuild execution and indicators that could suggest MSBuild abuse.
+- Map the investigation to MITRE ATT&CK T1127.001 – MSBuild.
+- Document the evidence and determine whether the observed activity should be classified as benign or suspicious.
+
 
 ## Environment
 
